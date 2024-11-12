@@ -1,0 +1,351 @@
+:root {
+    --white: #ffffff;
+    --light-gray: #f5f2e9;
+    /* Warmer light color for paper feel */
+    --dark-gray: #2b2620;
+    /* Warm dark brown */
+    --dark-bg: #1a1814;
+    /* Dark wood color */
+    --light-bg: #e6dfd1;
+    /* Light parchment color */
+    --light-shadow: rgba(139, 109, 76, 0.15);
+    /* Warm shadow */
+    --dark-shadow: rgba(0, 0, 0, 0.2);
+    --highlight: #8b6d4c;
+    /* Leather brown highlight */
+    --text-light: #f5f2e9;
+    /* Warm light text */
+    --text-dark: #2b2620;
+    /* Warm dark text */
+}
+
+
+/* background Gradient */
+body.bg-gradient {
+    background: linear-gradient(to right, var(--light-bg), #d4caba);
+    /* Warmer gradient */
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+
+
+/* main card & neumorphic card */
+.card,
+.main-card,
+.neumorphic-button,
+.book-card {
+    background: var(--light-gray);
+    border-radius: 8px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1),
+        -5px -5px 15px rgba(255, 255, 255, 0.8);
+}
+
+.card .book-card .main-card {
+    padding: 15px;
+}
+
+.main-card {
+    background: rgba(var(--white), 0.9);
+}
+
+.neumorphic-button,
+.neumorphic-input,
+.book-card {
+    padding: 10px 20px;
+    margin-bottom: 15px;
+}
+
+.book-card {
+    margin-bottom: 15px;
+}
+
+.neumorphic-input {
+    border: none;
+    outline: none;
+    padding: 10px;
+}
+
+.neumorphic-input,
+.neumorphic-button {
+    border-radius: 10px;
+    box-shadow: 1px 1px 13px rgba(0, 0, 0, 0.1),
+        -1px -1px 13px rgba(255, 255, 255, 0.8);
+}
+
+.neumorphic-button:hover,
+.book-card:hover,
+.shadow-neumorphic:hover {
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15),
+        -3px -3px 10px rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+}
+
+.theme-dark {
+    background-color: var(--dark-bg) !important;
+    color: var(--text-light) !important;
+}
+
+.theme-dark .card,
+.theme-dark .book-card,
+.theme-dark .main-card {
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3),
+        -5px -5px 15px rgba(255, 255, 255, 0.05);
+}
+
+.theme-dark .neumorphic-button,
+.theme-dark .neumorphic-input {
+    background: var(--dark-gray);
+    color: var(--text-light);
+}
+
+.theme-dark .neumorphic-button:hover {
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4),
+        -3px -3px 10px rgba(255, 255, 255, 0.1);
+}
+
+.theme-dark .btn-toggle {
+    color: var(--highlight);
+}
+
+.theme-dark .bi-moon-fill {
+    display: none;
+}
+
+.theme-light .bi-sun-fill {
+    display: none;
+}
+
+.theme-light .btn-toggle {
+    color: var(--text-dark);
+}
+
+.shadow-neumorphic {
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.1),
+        -8px -8px 15px rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease-in-out;
+}
+
+.swal2-popup {
+    font-size: 1.1rem;
+    border-radius: 12px;
+}
+
+* {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Floating Books Animation */
+.floating-books {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.floating-book {
+    position: absolute;
+    color: var(--highlight);
+    opacity: 0.2;
+    font-size: 2rem;
+    animation: float 15s linear infinite;
+}
+
+.floating-book:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.floating-book:nth-child(2) {
+    left: 30%;
+    animation-delay: -3s;
+    font-size: 2.5rem;
+}
+
+.floating-book:nth-child(3) {
+    left: 50%;
+    animation-delay: -6s;
+    font-size: 1.8rem;
+}
+
+.floating-book:nth-child(4) {
+    left: 70%;
+    animation-delay: -9s;
+    font-size: 2.2rem;
+}
+
+.floating-book:nth-child(5) {
+    left: 90%;
+    animation-delay: -12s;
+    font-size: 1.9rem;
+}
+
+@keyframes float {
+    0% {
+        top: -10%;
+        transform: translateX(-20px) rotate(0deg);
+        opacity: 0;
+    }
+
+    20% {
+        transform: translateX(20px) rotate(45deg);
+        opacity: 0.2;
+    }
+
+    40% {
+        transform: translateX(-20px) rotate(90deg);
+    }
+
+    60% {
+        transform: translateX(20px) rotate(135deg);
+    }
+
+    80% {
+        transform: translateX(-20px) rotate(180deg);
+        opacity: 0.2;
+    }
+
+    100% {
+        top: 110%;
+        transform: translateX(20px) rotate(225deg);
+        opacity: 0;
+    }
+}
+
+/* Ensure main content stays above floating books */
+.container {
+    position: relative;
+    z-index: 1;
+    max-height: 95vh;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+/* Dark theme adjustments */
+.theme-dark .floating-book {
+    opacity: 0.15;
+    color: var(--text-light);
+}
+
+/* Add these styles and modify some existing ones */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* Add custom scrollbar styling */
+.container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.container::-webkit-scrollbar-track {
+    background: var(--light-bg);
+    border-radius: 4px;
+}
+
+.container::-webkit-scrollbar-thumb {
+    background: var(--highlight);
+    border-radius: 4px;
+}
+
+.theme-dark .container::-webkit-scrollbar-track {
+    background: var(--dark-bg);
+}
+
+/* Adjust card spacing */
+.card-body {
+    padding: 15px;
+}
+
+.main-card {
+    margin: 0;
+    height: auto;
+}
+
+/* Adjust form and list spacing */
+.mb-3 {
+    margin-bottom: 0.8rem !important;
+}
+
+.mb-4 {
+    margin-bottom: 1rem !important;
+}
+
+/* Make book list more compact */
+#book-list .card {
+    margin-bottom: 10px;
+}
+
+.book-card {
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+/* Dark theme adjustments */
+.theme-dark .neumorphic-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+    /* Warna putih dengan sedikit transparansi */
+}
+
+/* Add styles for filter select */
+#genre-filter {
+    max-width: 200px;
+    margin-bottom: 1rem;
+}
+
+.theme-dark #genre-filter {
+    background-color: var(--dark-gray);
+    color: var(--text-light);
+}
+
+/* Add styles for book statistics */
+.book-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.book-stats .badge {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.8rem;
+}
+
+.theme-dark .badge.bg-primary {
+    background-color: var(--highlight) !important;
+}
+
+.theme-dark .badge.bg-secondary {
+    background-color: var(--dark-gray) !important;
+}
+
+/* Make badges more interactive */
+.badge {
+    transition: transform 0.2s ease;
+}
+
+.badge:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .book-stats {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .book-stats .badge {
+        margin-left: 0 !important;
+        margin-top: 0.3rem;
+    }
+}
